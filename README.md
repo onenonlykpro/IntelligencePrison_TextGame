@@ -1,2 +1,2 @@
-# IntelligencePrison_TextGame
+# Intelligence Prison Text Game
 A text-based game built in C# with Unity that explores the choices of an intelligence analyst at a young company.
