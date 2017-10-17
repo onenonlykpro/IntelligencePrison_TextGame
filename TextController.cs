@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -6,7 +6,7 @@ public class TextController : MonoBehaviour {
 
 	public Text text;
 	
-	private enum States {office_0, desk_0, consult_0, office_1, desk_1, consult_1, office_2};
+	private enum States {office_0, desk_0, consult_0, office_1, desk_1, office_2};
 	private States myState;
 
 	// Use this for initialization
@@ -28,6 +28,12 @@ public class TextController : MonoBehaviour {
 		else if (myState == States.office_2) {
 			state_office_2();
 		}
+		else if (myState == States.desk_1) {
+			state_desk_1();
+		}
+		else if (myState == States.consult_0) {
+			state_consult_0();
+		}
 	}
 	
 	// Starting scene at desk
@@ -42,6 +48,12 @@ public class TextController : MonoBehaviour {
 		
 		if (Input.GetKeyDown(KeyCode.T)) {
 			myState = States.office_0;
+		}
+		else if (Input.GetKeyDown(KeyCode.V)) {
+			myState = States.desk_1;
+		}
+		else if (Input.GetKeyDown(KeyCode.Q)) {
+			myState = States.consult_0;
 		}
 	}
 	
@@ -87,4 +99,35 @@ public class TextController : MonoBehaviour {
 			myState = States.desk_0;
 		}
 	}
+	
+	// Scene venting at coworkers
+	void state_desk_1 () {
+		text.text = "You begin to vent with your office mates about your frustrations. " +
+		"It doesn't take long before your office mates also begin to voice their " +
+		"complaints about the exectuive leadership in the company. Your office mates " +
+		"job hunt in their off-time and both find employment elsewhere only a month later. Consequently, you " +
+		"are pressured to work longer hours as the company struggles to find new talent, " +
+		"thanks to the numerous negative Glassdoor reviews that suddenly accumulate. \n\n" +
+		"Press the Space bar to play again.";
+		
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			myState = States.desk_0;
+		}
+	}
+	
+	// Scene for consulting
+	void state_consult_0 () {
+		text.text = "You hand in your two weeks' notice, and begin to market yourself in " +
+		"the gig economy. While your last company begins to fail due to its internal flaws, "+
+		"you start to build up a reputation by completing smaller, low paying intelligence " +
+		"projects through UpWork and LinkedIn Profinder. You quickly gather great reviews " +
+		"and move on to higher paying consulting gigs. You register your own business " +
+		"and continue successfully as a trustworthy intelligence and strategy consultant. " +
+		"\n\n Press the Space bar to play again.";
+		
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			myState = States.desk_0;
+		}
+	}
+			
 }
